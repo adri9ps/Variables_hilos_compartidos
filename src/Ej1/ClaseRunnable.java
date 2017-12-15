@@ -2,16 +2,16 @@ package Ej1;
 
 public class ClaseRunnable implements Runnable{
 	
-	String palabra;
+	String a;
 	
-	ClaseRunnable(String palabra) {
-		this.palabra = palabra;
-		Thread t1 = new Thread(this);
-		t1.start();
+	ClaseRunnable(String a) {
+		this.a = a;
+		Thread t = new Thread(this);
+		t.start();
 		try {
-			System.out.println("Inicio segundo hilo");
-			t1.join();
-			System.out.println("Finaliza el segundo hilo");
+			System.out.println("Segundo hilo comenzado");
+			t.join();
+			System.out.println("Segundo hilo finalizado");
 		} catch (InterruptedException e) {
 			System.out.println("Se ha parado el hilo");
 		}
@@ -22,7 +22,7 @@ public class ClaseRunnable implements Runnable{
 	public void run() {
 		try {
 			for(int i=1; i<=5 ; i++) {
-				System.out.println(this.palabra);
+				System.out.println(this.a);
 				System.out.println("Main aqui...");
 				Thread.sleep(1000);
 			}
